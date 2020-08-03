@@ -1,0 +1,10 @@
+services:
+ hybridmind.aio.listener:
+  class: hybridmind\aio\event\listener
+  arguments:
+   - "@config"
+   - "@template"
+   - "@user"
+   - "@dbal.conn"
+  tags:
+   - { name: event.listener }

@@ -1,0 +1,100 @@
+<!-- IF SCRIPT_NAME == 'viewtopic' || SCRIPT_NAME == "index" || SCRIPT_NAME == 'viewforum' -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.codebox code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+    });
+    var current,
+        ripple,
+        d,
+        x,
+        y;
+    $('.button').click(function(e) {
+        current = $(this);
+        // Cria o elemento .ripple caso ele não exista
+        if (current.find(".ripple").length === 0) {
+            // Prepara o pai para receber o elemento .ripple
+            current.addClass('prepare-ripple');
+            // Insere o elemento .ripple no conteúdo
+            current.prepend("<span class='ripple'></span>");
+        }
+        // Define o .ripple criado em uma variável
+        ripple = current.find(".ripple");
+        // Em caso de cliques duplos rápidos, para a animação anterior
+        ripple.removeClass("on-animate");
+        // Define o tamanho do .ripple
+        if (!ripple.height() && !ripple.width()) {
+            // Usa a largura ou a altura do pai 
+            // O que for maior para fazer um círculo que pode cobrir todo o elemento.
+            d = Math.max(current.outerWidth(), current.outerHeight());
+            ripple.css({
+                height: d,
+                width: d
+            });
+        }
+        // Coordenadas do clique
+        // Lógica = Coordenadas em relação a página 
+        // - Do pai, posição relativa para a página
+        x = e.pageX - current.offset().left - ripple.width() / 2;
+        y = e.pageY - current.offset().top - ripple.height() / 2;
+        // Define a posição e adiciona a classe .on-animate
+        ripple.css({
+            top: y + 'px',
+            left: x + 'px'
+        }).addClass("on-animate");
+    });
+
+    $('.forums dd.topics').each(function(i, item) {
+        $(this).wrapInner('<span class="topic_post_box"></span>');
+    });
+
+    $('.row dd.posts').each(function(i, item) {
+        $(this).wrapInner('<span class="topic_post_box"></span>');
+    });
+    $('.row dd.views').each(function(i, item) {
+        $(this).wrapInner('<span class="topic_post_box"></span>');
+    });
+</script>
+<!-- ENDIF -->
+
+<!-- IF SCRIPT_NAME == 'ucp' -->
+<script>
+    function generatePassword() {
+        var length = 8,
+            charset = "abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+            retVal = "";
+        for (var i = 0, n = charset.length; i < length; ++i) {
+            retVal += charset.charAt(Math.floor(Math.random() * n));
+        }
+        return retVal;
+    }
+
+    function do_this() {
+        $('#append_pass').text(generatePassword());
+    }
+
+    $("input#new_password").after('<input type="button" class="button2" value="Генериране на парола" onclick="do_this()"/> <div id="append_pass"></div>');
+</script>
+<!-- ENDIF -->
+
+<!-- IF !S_REGISTERED_USER -->
+<script type="text/javascript">
+    function clickEVENTNS4(n) {
+        return !(document.layers || document.getElementById && !document.all) || 2 != n.which && 3 != n.which ? void 0 : (alert("Right click is disabled!"), !1)
+    }
+
+    function clickEVENTIE4() {
+        return 2 == event.button ? (alert("This is the simple javascript Right Clieck Disabled or OFF Function"), !1) : void 0
+    }
+    var isCtrl = !1;
+    document.onkeyup = function(n) {
+        17 == n.which && (isCtrl = !1)
+    }, document.onkeydown = function(n) {
+        return 17 == n.which && (isCtrl = !0), 67 == n.which && 1 == isCtrl ? !1 : void 0
+    }, document.layers ? (document.captureEvents(Event.MOUSEDOWN), document.onmousedown = clickEVENTNS4) : document.all && !document.getElementById && (document.onmousedown = clickEVENTIE4), document.oncontextmenu = new Function("return false");
+</script>
+<!-- ENDIF -->

@@ -1,0 +1,29 @@
+{
+    "name": "hybridmind/aio",
+    "type": "phpbb-extension",
+    "description": "All in One",
+    "homepage": "N/A",
+    "version": "1.0.0",
+    "time": "2020-06-10",
+    "keywords": ["phpbb", "extension", "hybridmind", "aio"],
+    "license": "GPL-2.0-only",
+    "authors": [{
+        "name": "hybridmind",
+        "email": "impossiblelimner@gmail.com",
+        "homepage": "N/A",
+        "role": "Developer"
+    }],
+    "require": {
+        "php": ">=5.4.0",
+        "composer/installers": "~1.0"
+    },
+    "require-dev": {
+        "phpbb/epv": "dev"
+    },
+    "extra": {
+        "display-name": "HybridMind ALL IN ONE",
+        "soft-require": {
+            "phpbb/phpbb": "~3.2s"
+        }
+    }
+}
