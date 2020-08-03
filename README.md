@@ -1,9 +1,9 @@
 # aio_all_in_one
 Demo:
-https://i.imgur.com/1Mz7vUa.png
-https://i.imgur.com/Zd1bQiM.png
-https://i.imgur.com/8jyTWoX.png
-https://i.imgur.com/gzRvLHk.png
+<img src="https://i.imgur.com/1Mz7vUa.png" />
+<img src="https://i.imgur.com/Zd1bQiM.png" />
+<img src="https://i.imgur.com/8jyTWoX.png" />
+<img src="https://i.imgur.com/gzRvLHk.png" />
 
 The extension adds various features to your forum, namely: 
 - Adds a header, footer, changes the boxes of the categories / sections and adds a box to the statistics; 
